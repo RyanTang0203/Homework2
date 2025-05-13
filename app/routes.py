@@ -37,29 +37,29 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html', form=form)
-	
+
 # Displays Recipes
 @myapp_obj.route('/home')
 @login_required
 def home():
-	recipes = Recipe.query.order_by(Recipe.created.desc()).all()
-	return render_template('home.html', recipes=recipes)
+    recipes = Recipe.query.order_by(Recipe.created.desc()).all()
+    return render_template('home.html', recipes=recipes)
 
-# Logout User	
+# Logout User
 @myapp_obj.route('/logout')
 @login_required
 def logout():
-	logout_user()
-	return redirect(url_for('login'))
+    logout_user()
+    return redirect(url_for('login'))
 
 # Lists Recipes
-@myapp_obj.route("/recipes")
+@myapp_obj.route('/recipes')
 def list_recipes():
     recipes = Recipe.query.all()
-    return render_template("recipes.html", recipes=recipes)
+    return render_template('recipes.html', recipes=recipes)
 
 # Add New Recipe
-@myapp_obj.route("/recipe/new", methods=['GET', 'POST'])
+@myapp_obj.route('/recipe/new', methods=['GET', 'POST'])
 @login_required
 def add_recipe():
     form = RecipeForm()
@@ -74,22 +74,26 @@ def add_recipe():
         db.session.add(recipe)
         db.session.commit()
         flash('Recipe added successfully!')
-    return render_template("add_recipe.html", form=RecipeForm())
+        return redirect(url_for('list_recipes'))
+    return render_template('add_recipe.html', form=form)
 
-@myapp_obj.route("/recipe/<int:recipe_id>")
+# View Recipe Details
+@myapp_obj.route('/recipe/<int:recipe_id>')
 def view_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
-    return render_template("recipe_detail.html", recipe=recipe)
+    return render_template('recipe_detail.html', recipe=recipe)
 
-@myapp_obj.route("/recipe/<int:recipe_id>/delete")
+# Delete Recipe
+@myapp_obj.route('/recipe/<int:recipe_id>/delete', methods=['POST'])
 @login_required
 def delete_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
     db.session.delete(recipe)
     db.session.commit()
-    flash('Recipe deleted.')
+    flash(f'Recipe "{recipe.title}" deleted successfully.')
     return redirect(url_for('list_recipes'))
 
+# Edit Recipe
 @myapp_obj.route('/edit_recipe/<int:recipe_id>', methods=['POST'])
 def edit_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
