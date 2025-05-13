@@ -19,7 +19,7 @@
         <h1 id="title-display">{{ recipe.title }}</h1>
         <input type="text" name="title" id="title-input" value="{{ recipe.title }}" style="display:none;">
 
-        <p class="timestamp">Created on: {{ recipe.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+        <p>Created At: {{ recipe.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
 
         <p><strong>Description:</strong><br>
             <span id="description-display">{{ recipe.description }}</span>
