@@ -84,7 +84,7 @@ def view_recipe(recipe_id):
     return render_template('recipe_detail.html', recipe=recipe)
 
 # Delete Recipe
-@myapp_obj.route('/recipe/<int:recipe_id>/delete', methods=['POST'])
+@myapp_obj.route('/recipe/<int:recipe_id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
