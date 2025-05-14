@@ -1,0 +1,29 @@
+# Recipe_Web_App
+- Ryan (@RyanTang0203)
+
+# Implementation
+General Information:
+- This project is a simple recipe web application:
+  - allows users to input create, edit, view and save recipes
+ 
+How To Use Website:
+- Register or log into an account
+- If wanting to logout, there is a logout button at the top right of the home menu
+- In the "Create Recipe" button, click "Add Recipe" if wanting to submit own dish
+- Write down all information in detail about the dish giving the name, discription, ingredients, and instructions.
+- When clicking add recipe, it adds it to the view recipes tab where you can see all the information of the recipe
+- If wanting to edit you would click on the recipe and click edit and if wanting to delete a recipe you click delete button next to recipe name
+
+### 1. Clone the repository
+- git clone https://github.com/RyanTang0203/Recipe_Web_App.git
+- cd Recipe_Web_App
+
+### 2. Create and activate a virtual environment *(IMPORTANT)*
+- python3 -m venv venv
+- source venv/bin/activate
+
+### 3. Install dependencies
+pip install -r requirements.txt
+
+### 3. Running the application
+python3 run.py
