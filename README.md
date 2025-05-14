@@ -15,7 +15,7 @@ How To Use Website:
 - If wanting to edit you would click on the recipe and click edit and if wanting to delete a recipe you click delete button next to recipe name
 
 ### 1. Clone the repository
-- git clone https://github.com/RyanTang0203/Recipe_Web_App.git
+- git clone https://github.com/RyanTang0203/Homework2.git
 - cd Recipe_Web_App
 
 ### 2. Create and activate a virtual environment *(IMPORTANT)*
